@@ -1,6 +1,6 @@
 [user]
-  name = Robert Brewitz
-  email = hello@robertbrewitz.com
+  name = Oleg Lindvin
+  email = oleg.lindvin@gmail.com
 [color]
   branch = auto
   diff = auto
@@ -21,7 +21,7 @@
   pom = push origin master
   dom = rebase origin/master
 [github]
-  user = RobertBrewitz
+  user = Klusterish
 [branch]  
   autosetuprebase = always
 [push]
