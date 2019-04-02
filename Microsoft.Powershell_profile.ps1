@@ -5,6 +5,12 @@ Set-Theme Avit
 
 $DefaultUser = 'olli'
 
+function Get-Clear { cls }
+New-Alias -Name cl -Value Get-Clear
+
+function Get-Vim { vim $args }
+New-Alias -Name vi -Value Get-Vim
+
 # Shortening the git usage for the less used command.
 function Get-Git-Arg { git $args }
 New-Alias -Name g -Value Get-Git-Arg
@@ -46,5 +52,38 @@ function pull-currentbranch {
 }
 New-Alias -Name pull -Value pull-currentbranch
 
+# Get to my testing dir right awat
+function playground {
+    cd C:\Users\oleg.lindvin\Documents\Projects\playground
+}
+New-Alias -Name play -Value playground
+
+# Restard Powershell Session from whithin the session
+# Credit https://communary.net/2015/05/28/how-to-reload-the-powershell-console-session/ 
+function Invoke-PowerShell {
+    powershell -nologo
+    Invoke-PowerShell
+}
+
+function Restart-PowerShell {
+    if ($host.Name -eq 'ConsoleHost') {
+        exit
+    }
+    Write-Warning 'Only usable while in the PowerShell console host'
+}
+
+Set-Alias -Name 'rs' -Value Restart-PowerShell
+
+$parentProcessId = (Get-WmiObject Win32_Process -Filter "ProcessId=$PID").ParentProcessId
+$parentProcessName = (Get-WmiObject Win32_Process -Filter "ProcessId=$parentProcessId").ProcessName
+
+if ($host.Name -eq 'ConsoleHost') {
+    if (-not($parentProcessName -eq 'powershell.exe')) {
+        Invoke-PowerShell
+    }
+}
+
 # Some flavour of fun
 figlet -f epic -w 100 "Lets do some CODING <3 <3"
+
+
