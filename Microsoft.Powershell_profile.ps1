@@ -69,7 +69,6 @@ function powershell-new {
 
 New-Alias -Name new -Value powershell-new
 
-
 function open-config { code $profile }
 New-Alias -Name config -Value open-config
 
@@ -100,5 +99,3 @@ if ($host.Name -eq 'ConsoleHost') {
 
 # Some flavour of fun
 figlet -f epic -w 100 "Lets do some CODING <3 <3"
-
-
