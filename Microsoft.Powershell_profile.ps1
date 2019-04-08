@@ -58,6 +58,21 @@ function playground {
 }
 New-Alias -Name play -Value playground
 
+# Open exporer
+function open-files { explorer.exe $args }
+New-Alias -Name open -Value open-files
+
+# New powershell instance
+function powershell-new {
+    & "C:\Users\oleg.lindvin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk"
+}
+
+New-Alias -Name new -Value powershell-new
+
+
+function open-config { code $profile }
+New-Alias -Name config -Value open-config
+
 # Restard Powershell Session from whithin the session
 # Credit https://communary.net/2015/05/28/how-to-reload-the-powershell-console-session/ 
 function Invoke-PowerShell {
