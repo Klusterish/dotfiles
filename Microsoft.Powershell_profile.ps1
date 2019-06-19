@@ -2,8 +2,13 @@ Import-Module posh-git
 Import-Module oh-my-posh
 
 Set-Theme Avit
+Set-PSReadlineOption -BellStyle None
 
 $DefaultUser = 'olli'
+
+# Quick tail logs alias that reminisent of bash
+function Tail-Log { Get-Content $args -Wait -Tail 10 }
+New-Alias -Name tail -Value Tail-Log
 
 function Get-Clear { cls }
 New-Alias -Name cl -Value Get-Clear
@@ -69,6 +74,12 @@ function powershell-new {
 
 New-Alias -Name new -Value powershell-new
 
+function pdx_pegasus {
+    & "D:\tools\pdx_pegasus\windows\pdx_pegasus.exe" $args 
+}
+New-Alias -Name pegasus -Value pdx_pegasus
+
+
 function open-config { code $profile }
 New-Alias -Name config -Value open-config
 
@@ -99,3 +110,5 @@ if ($host.Name -eq 'ConsoleHost') {
 
 # Some flavour of fun
 figlet -f epic -w 100 "Lets do some CODING <3 <3"
+
+
